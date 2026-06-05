@@ -4,7 +4,7 @@ A modern, high-performance, and foolproof LinkHub (Linktree alternative) built w
 
 > **Note for Users:** Linkbawm was created as a simple, easy-to-use template for non-technical users who want to own their link hub without the complexity of modern web frameworks. 
 > 
-> **Disclaimer:** This project is in its early stages. While it is functional, testing has not been exhaustive and you may encounter bugs. If you find an issue, feel free to report it via my social links, open an issue on GitHub, or contribute a fix!
+> **Disclaimer:** This project is in its early stages. While it is functional, testing has not been exhaustive and you may encounter bugs. If you find an issue, feel free to report it via my [GitHub](https://github.com/thingpuisenhang), [Twitter](https://x.com/thingpuisenhang), or [Instagram](https://instagram.com/khomchunisien), open an issue on GitHub, or contribute a fix!
 
 ## Features
 - **Zero-Code Content:** Manage your links entirely via `_data/links.yml`.
