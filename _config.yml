@@ -14,7 +14,6 @@ max_links: 5
 link_order: "top" # Available: "top", "bottom", "random", "custom" (uses _data/priority.yml)
 
 # GitHub Pages compatibility
-remote_theme: mmistakes/minimal-mistakes # Optional, but we'll stick to a custom local setup for now
 plugins:
   - jekyll-feed
   - jekyll-sitemap
