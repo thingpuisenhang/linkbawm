@@ -1,0 +1,22 @@
+# Linkbawm: Your Links
+# RECOMMENDATION: Use 5 links for the best look. 
+# LIMIT: The first 6 links will be displayed to keep your page clean.
+
+- label: "Instagram"
+  url: "#"
+  platform: "instagram"
+- label: "Facebook"
+  url: "#"
+  platform: "facebook"
+- label: "Twitter"
+  url: "#"
+  platform: "twitter"
+- label: "WhatsApp"
+  url: "#"
+  platform: "whatsapp"
+- label: "YouTube"
+  url: "#"
+  platform: "youtube"
+- label: "GitHub"
+  url: "#"
+  platform: "github"

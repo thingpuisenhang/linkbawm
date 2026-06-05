@@ -1,0 +1,98 @@
+---
+---
+{% assign theme = site.data.themes.glass %}
+{% assign active = site.personalize %}
+
+body {
+    /* Core Variables */
+    --bg-color: {% if active and theme.background_color %}{{ theme.background_color }}{% else %}#0f172a{% endif %};
+    --bg-opacity: {% if active and theme.background_overlay_opacity %}{{ theme.background_overlay_opacity }}{% else %}0.6{% endif %};
+    --text-color: {% if active and theme.text_color %}{{ theme.text_color }}{% else %}#ffffff{% endif %};
+    
+    /* Card Variables */
+    --card-bg: {% if active and theme.card_background %}{{ theme.card_background }}{% else %}rgba(255, 255, 255, 0.1){% endif %};
+    --card-hover: {% if active and theme.card_hover %}{{ theme.card_hover }}{% else %}rgba(255, 255, 255, 0.2){% endif %};
+    --card-border-size: {% if active and theme.card_border_size %}{{ theme.card_border_size }}{% else %}1px{% endif %};
+    --card-border-color: {% if active and theme.card_border_color %}{{ theme.card_border_color }}{% else %}rgba(255, 255, 255, 0.2){% endif %};
+    --border-radius: {% if active and theme.border_radius %}{{ theme.border_radius }}{% else %}12px{% endif %};
+    --blur: {% if active and theme.blur_amount %}{{ theme.blur_amount }}{% else %}12px{% endif %};
+
+    /* Avatar Variables */
+    --avatar-border-size: {% if active and theme.avatar_border_size %}{{ theme.avatar_border_size }}{% else %}2px{% endif %};
+    --avatar-border-color: {% if active and theme.avatar_border_color %}{{ theme.avatar_border_color }}{% else %}rgba(255, 255, 255, 0.2){% endif %};
+    --avatar-radius: {% if active %}{% if theme.avatar_shape == 'square' %}0px{% elsif theme.avatar_shape == 'rounded' %}12px{% else %}50%{% endif %}{% else %}50%{% endif %};
+
+    background-color: var(--bg-color);
+    
+    {% assign show_bg = true %}
+    {% if active and theme.show_background == false %}{% assign show_bg = false %}{% endif %}
+    
+    {% if show_bg %}
+    background-image: linear-gradient(rgba(0, 0, 0, var(--bg-opacity)), rgba(0, 0, 0, var(--bg-opacity))), url('{{ site.background_image | relative_url }}');
+    {% else %}
+    background-image: none !important;
+    {% endif %}
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+}
+
+@media (orientation: portrait) {
+    body {
+        {% if show_bg %}
+        background-image: linear-gradient(rgba(0, 0, 0, var(--bg-opacity)), rgba(0, 0, 0, var(--bg-opacity))), url('{{ site.background_portrait | relative_url }}');
+        {% endif %}
+    }
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--avatar-radius);
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: var(--avatar-border-size) solid var(--avatar-border-color);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: var(--card-border-size) solid var(--card-border-color);
+    
+    {% if active and theme.use_native_colors %}
+    background: var(--brand-color);
+    backdrop-filter: none;
+    border: none;
+    {% endif %}
+}
+
+.link-card:hover {
+    background: var(--card-hover);
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.4);
+    
+    {% if active and theme.use_native_colors %}
+    background: var(--brand-color);
+    filter: brightness(1.1);
+    {% endif %}
+}

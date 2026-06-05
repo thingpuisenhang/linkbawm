@@ -1,0 +1,79 @@
+---
+---
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Shared Layout Components */
+.profile {
+    text-align: center;
+    margin-top: 8vh; 
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 480px;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin: 0 0 4px 0;
+}
+
+.bio {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    max-width: 260px;
+    margin: 0 auto;
+    line-height: 1.3;
+}
+
+.links {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.link-card i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 20px 0;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* Snug Logic */
+body.layout-snug {
+    justify-content: flex-start !important;
+    overflow: hidden;
+}
+
+body.layout-snug .profile {
+    margin-top: 5vh !important; /* Slightly lower since there are only 5 links max */
+}
+
+body.no-avatar.layout-snug .profile {
+    margin-top: 18vh !important; /* Slightly lower to center 5 links better */
+}

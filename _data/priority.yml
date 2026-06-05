@@ -1,0 +1,14 @@
+# Link Priority & Visibility
+# ONLY platforms with a number/value will be shown in "custom" mode.
+# The order in this file determines the order on the site.
+
+facebook: 1
+instagram: 2
+youtube: 3
+twitter: 4
+github: 5
+tiktok: 6
+spotify: 7
+
+# Hidden platforms (no value assigned)
+linkedin:

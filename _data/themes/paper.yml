@@ -1,0 +1,27 @@
+# Linkbawm: Paper Skin Customization
+# NOTE: Set 'personalize: true' in _config.yml to use these settings.
+
+# Identity Overrides
+# name: "Your Name"
+# bio: "Your Bio"
+
+# Visibility Toggles
+show_avatar: false # Default personalized: HIDDEN
+
+# Background & Text
+background_color: "#ffffff" # Default personalized: WHITE
+text_color: "#111111"
+
+# Avatar Settings
+avatar_border_size: "2px"
+avatar_border_color: "#111111"
+avatar_shape: "circle"
+
+# Link Card Settings
+card_background: "#ffffff"
+card_border_size: "2px"
+card_border_color: "#111111"
+border_radius: "20px" # Default personalized: ROUNDED
+
+# Social Link Logic
+use_native_colors: true # Default personalized: ENABLED

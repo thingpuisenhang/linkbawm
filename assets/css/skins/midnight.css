@@ -1,0 +1,55 @@
+---
+---
+{% assign theme = site.data.themes.midnight %}
+{% assign active = site.personalize %}
+
+body {
+    --bg-color: {% if active and theme.background_color %}{{ theme.background_color }}{% else %}#000000{% endif %};
+    --text-color: {% if active and theme.text_color %}{{ theme.text_color }}{% else %}#eeeeee{% endif %};
+    --card-bg: {% if active and theme.card_background %}{{ theme.card_background }}{% else %}#111111{% endif %};
+    --card-hover-bg: {% if active and theme.card_hover_bg %}{{ theme.card_hover_bg }}{% else %}#ffffff{% endif %};
+    --card-hover-text: {% if active and theme.card_hover_text %}{{ theme.card_hover_text }}{% else %}#000000{% endif %};
+    --card-border: {% if active and theme.card_border %}{{ theme.card_border }}{% else %}#333333{% endif %};
+    --border-radius: {% if active and theme.border_radius %}{{ theme.border_radius }}{% else %}100px{% endif %};
+
+    background-color: var(--bg-color);
+    background-image: none !important;
+    color: var(--text-color);
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--card-border);
+    margin-bottom: 12px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: var(--border-radius); 
+    border: 1px solid var(--card-border);
+    width: 100%;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.link-card:hover {
+    background: var(--card-hover-bg);
+    color: var(--card-hover-text);
+    border-color: var(--card-hover-bg);
+}

@@ -1,0 +1,71 @@
+---
+---
+{% assign theme = site.data.themes.paper %}
+{% assign active = site.personalize %}
+
+body {
+    --bg-color: {% if active and theme.background_color %}{{ theme.background_color }}{% else %}#ffffff{% endif %};
+    --text-color: {% if active and theme.text_color %}{{ theme.text_color }}{% else %}#111111{% endif %};
+    --card-bg: {% if active and theme.card_background %}{{ theme.card_background }}{% else %}#ffffff{% endif %};
+    --card-hover: {% if active and theme.card_hover %}{{ theme.card_hover }}{% else %}#f3f4f6{% endif %};
+    --card-border-size: {% if active and theme.card_border_size %}{{ theme.card_border_size }}{% else %}2px{% endif %};
+    --card-border-color: {% if active and theme.card_border_color %}{{ theme.card_border_color }}{% else %}#111111{% endif %};
+    --border-radius: {% if active and theme.border_radius %}{{ theme.border_radius }}{% else %}0px{% endif %};
+
+    --avatar-border-size: {% if active and theme.avatar_border_size %}{{ theme.avatar_border_size }}{% else %}2px{% endif %};
+    --avatar-border-color: {% if active and theme.avatar_border_color %}{{ theme.avatar_border_color }}{% else %}#111111{% endif %};
+    --avatar-radius: {% if active %}{% if theme.avatar_shape == 'square' %}0px{% elsif theme.avatar_shape == 'rounded' %}12px{% else %}50%{% endif %}{% else %}50%{% endif %};
+
+    background-color: var(--bg-color);
+    background-image: none !important;
+    color: var(--text-color);
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: var(--avatar-radius);
+    object-fit: cover;
+    border: var(--avatar-border-size) solid var(--avatar-border-color);
+    margin-bottom: 12px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: var(--card-border-size) solid var(--card-border-color);
+    border-radius: var(--border-radius);
+    width: 100%;
+    font-weight: 700;
+    transition: all 0.2s ease;
+
+    {% if active and theme.use_native_colors %}
+    background: var(--brand-color);
+    color: #ffffff;
+    border-color: rgba(0,0,0,0.1);
+    {% endif %}
+}
+
+.link-card:hover {
+    background: var(--card-hover);
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0px var(--card-border-color);
+
+    {% if active and theme.use_native_colors %}
+    background: var(--brand-color);
+    filter: brightness(1.1);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    {% endif %}
+}

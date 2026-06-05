@@ -1,0 +1,26 @@
+# Linkbawm: Terminal Skin Customization
+# NOTE: Set 'personalize: true' in _config.yml to use these settings.
+
+# Identity Overrides
+# name: "phxlm"
+# bio: "linux enthusiast"
+
+# Theme Select Mode
+# Options: "default", "hacker", "hacker-inverted", "amber"
+# - default: Mainframe (Charcoal on Ivory White)
+# - hacker: Classic Matrix (Green on Black)
+# - hacker-inverted: Inverted Matrix (Black on Green)
+# - amber: Fallout (Orange on Dark Brown)
+# (Note: To use the Standard terminal look (White/Black), set 'personalize: false' in _config.yml)
+mode: "default"
+
+# Manual Overrides (Leave blank to use Mode defaults)
+background_color: 
+font_color: 
+border_color: 
+font_family: "'Courier New', Courier, monospace"
+
+# Extra Features
+crt_effect: true # Toggle the CRT scanline background
+crt_line_size: "4px" # Height of the scanlines (e.g., 2px, 4px)
+glow: true

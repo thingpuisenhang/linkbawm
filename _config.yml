@@ -1,0 +1,20 @@
+title: "Linkbawm"
+description: "My personal link hub."
+author:
+  name: "Your Name" # Max 4 words recommended
+  bio: "Digital Creator | Explorer | Thinker" # Max 15 words recommended
+  avatar: "/assets/images/avatar.webp" # Place your image here
+
+# Appearance
+skin: "glass" # Available: "glass", "terminal", "paper", "midnight"
+personalize: false # If true, loads settings from _data/themes/[skin].yml
+background_image: "/assets/images/bg-landscape.webp"
+background_portrait: "/assets/images/bg-portrait.webp"
+max_links: 5
+link_order: "top" # Available: "top", "bottom", "random", "custom" (uses _data/priority.yml)
+
+# GitHub Pages compatibility
+remote_theme: mmistakes/minimal-mistakes # Optional, but we'll stick to a custom local setup for now
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap

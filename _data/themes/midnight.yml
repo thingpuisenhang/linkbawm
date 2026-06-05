@@ -1,0 +1,27 @@
+# Linkbawm: Midnight Skin Customization
+# NOTE: Set 'personalize: true' in _config.yml to use these settings.
+
+# Identity Overrides
+# name: "Your Name"
+# bio: "Your Bio"
+
+# Visibility Toggles
+show_avatar: false # Default personalized: HIDDEN
+
+# Background & Text
+background_color: "#000000" # Default personalized: OLED BLACK
+text_color: "#eeeeee"
+
+# Avatar Settings
+avatar_border_size: "2px"
+avatar_border_color: "#333333"
+avatar_shape: "circle"
+
+# Link Card Settings
+card_background: "#111111"
+card_border_size: "1px"
+card_border_color: "#333333"
+border_radius: "100px" # Default personalized: PILL SHAPE
+
+# Social Link Logic
+use_native_colors: true # Default personalized: ENABLED

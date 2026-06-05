@@ -1,0 +1,31 @@
+# Linkbawm: Glass Skin Customization
+# NOTE: Set 'personalize: true' in _config.yml to use these settings.
+
+# Identity Overrides
+# name: "Your Name"
+# bio: "Your Bio"
+
+# Visibility Toggles
+show_avatar: false # NO AVATAR
+show_background: true
+
+# Background & Text
+background_color: "#0f172a"
+background_overlay_opacity: 0.6
+text_color: "#ffffff"
+blur_amount: "12px"
+
+# Avatar Settings
+avatar_border_size: "2px"
+avatar_border_color: "rgba(255, 255, 255, 0.2)"
+avatar_shape: "circle"
+
+# Link Card Settings
+card_background: "rgba(255, 255, 255, 0.1)"
+card_hover: "rgba(255, 255, 255, 0.2)"
+card_border_size: "1px"
+card_border_color: "rgba(255, 255, 255, 0.2)"
+border_radius: "20px" # ROUNDED EDGES
+
+# Social Link Logic
+use_native_colors: false 

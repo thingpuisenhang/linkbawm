@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ '/assets/css/core.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/skins/' | append: site.skin | append: '.css' | relative_url }}">
+</head>
+
+{% comment %} Initialize Profile Logic Early {% endcomment %}
+{% assign show_avatar = true %}
+{% assign display_name = site.author.name %}
+{% assign display_bio = site.author.bio %}
+
+{% if site.personalize %}
+    {% assign theme_data = site.data.themes[site.skin] %}
+    {% if theme_data.show_avatar == false %}{% assign show_avatar = false %}{% endif %}
+    {% if theme_data.name %}{% assign display_name = theme_data.name %}{% endif %}
+    {% if theme_data.bio %}{% assign display_bio = theme_data.bio %}{% endif %}
+{% endif %}
+
+{% assign links = site.data.links %}
+{% assign final_links = "" | split: "" %}
+{% assign is_custom = false %}
+
+{% if site.link_order == "custom" and site.data.priority %}
+    {% assign is_custom = true %}
+    {% for entry in site.data.priority %}
+        {% assign p_name = entry[0] %}
+        {% assign p_val = entry[1] %}
+        {% if p_val %}
+            {% for link in links %}
+                {% if link.platform == p_name %}
+                    {% assign final_links = final_links | push: link %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    {% assign final_limit = final_links.size %}
+{% else %}
+    {% if site.link_order == "bottom" %}
+        {% assign final_links = links | reverse %}
+    {% elsif site.link_order == "random" %}
+        {% assign final_links = links | sample: links.size %}
+    {% else %}
+        {% assign final_links = links %}
+    {% endif %}
+    {% assign final_limit = site.max_links %}
+{% endif %}
+
+{% assign displayed_links_count = final_links.size | at_most: final_limit %}
+
+<body class="skin-{{ site.skin }} {% if displayed_links_count <= 5 %}layout-snug{% endif %} {% unless show_avatar %}no-avatar{% endunless %}">
+
+    <header class="profile">
+        {% if site.author.avatar and show_avatar %}
+            <img src="{{ site.author.avatar | relative_url }}" alt="{{ display_name }}" class="avatar">
+        {% endif %}
+        <div class="profile-info">
+            <h1>{{ display_name | truncatewords: 4, "" }}</h1>
+            <p class="bio">{% if site.skin == "terminal" %}{{ display_bio | lowercase | truncatewords: 15 }}{% else %}{{ display_bio | truncatewords: 15 }}{% endif %}</p>
+        </div>
+    </header>
+
+    <main class="links">
+        {% for link in final_links limit:final_limit %}
+            {% assign platform_name = link.platform | lowercase %}
+            {% assign icon_class = site.data.platforms[platform_name] | default: "fa-solid fa-link" %}
+            {% assign brand_color = site.data.brand_colors[platform_name] %}
+            
+            <a href="{{ link.url }}" class="link-card" target="_blank" rel="noopener noreferrer" style="--brand-color: {{ brand_color }};">
+                {% if site.skin == "terminal" %}
+                    <span class="term-platform">{{ platform_name }}</span>: <span class="term-url">{{ link.url | replace: "https://", "" | replace: "http://", "" | truncate: 30 }}</span>
+                {% else %}
+                    <i class="{{ icon_class }}"></i>
+                    <span>{{ link.label }}</span>
+                {% endif %}
+            </a>
+        {% endfor %}
+    </main>
+
+    <footer class="footer">
+        <p>Get your own LinkHub at <a href="https://batchnode.onrender.com">BatchNode</a></p>
+    </footer>
+
+</body>
+</html>

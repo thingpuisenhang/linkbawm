@@ -1,0 +1,117 @@
+---
+---
+{% assign theme = site.data.themes.terminal %}
+{% assign active = site.personalize %}
+
+/* Base Defaults (Personalization OFF) */
+{% assign bg = "#000000" %}
+{% assign text = "#ffffff" %}
+
+{% if active %}
+    {% if theme.mode == "default" or theme.mode == "mainframe" %}
+        /* Mainframe Style: Charcoal on Ivory */
+        {% assign bg = "#fffff0" %}
+        {% assign text = "#1a1a1a" %}
+    {% elsif theme.mode == "hacker" %}
+        /* Hacker Style: Green on Black */
+        {% assign bg = "#000000" %}
+        {% assign text = "#00ff41" %}
+    {% elsif theme.mode == "hacker-inverted" %}
+        /* Hacker Inverted: Black on Green */
+        {% assign bg = "#00ff41" %}
+        {% assign text = "#000000" %}
+    {% elsif theme.mode == "amber" %}
+        /* Fallout Style: Orange on Dark Brown */
+        {% assign bg = "#281b00" %}
+        {% assign text = "#ffb000" %}
+    {% endif %}
+
+    /* Manual Overrides */
+    {% if theme.background_color %}{% assign bg = theme.background_color %}{% endif %}
+    {% if theme.font_color %}{% assign text = theme.font_color %}{% endif %}
+{% endif %}
+
+body {
+    --bg-color: {{ bg }};
+    --text-color: {{ text }}; 
+    --card-border: {% if active and theme.border_color %}{{ theme.border_color }}{% else %}{{ text }}{% endif %};
+    --card-hover-bg: {{ text }};
+    --card-hover-text: {{ bg }};
+    --font-family: {% if active and theme.font_family %}{{ theme.font_family }}{% else %}'Courier New', Courier, monospace{% endif %};
+
+    background-color: var(--bg-color);
+    
+    /* Only show scanlines if enabled or if personalization is off (defaults to on) */
+    {% if active == false or theme.crt_effect %}
+        {% assign line_size = theme.crt_line_size | default: "2px" %}
+        {% if active == false %}{% assign line_size = "2px" %}{% endif %}
+        
+        /* Adjust scanline color based on background darkness */
+        {% if bg == "#fffff0" or bg == "#ffffff" %}
+            {% assign scan_opacity = 0.05 %}
+        {% else %}
+            {% assign scan_opacity = 0.15 %}
+        {% endif %}
+        background-image: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, {{ scan_opacity }}) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)) !important;
+        background-size: 100% {{ line_size }}, {{ line_size }} 100% !important;
+    {% else %}
+        background-image: none !important;
+    {% endif %}
+
+    color: var(--text-color);
+    font-family: var(--font-family);
+
+    {% if active and theme.glow %}
+    text-shadow: 0 0 5px {{ text | replace: '#', 'rgba(' | append: ', 0.5)' }};
+    {% endif %}
+}
+
+.profile {
+    text-align: left;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+}
+
+.avatar {
+    display: none; 
+}
+
+h1, .bio, .link-card {
+    text-transform: lowercase;
+}
+
+.bio::before {
+    content: "bio: ";
+    font-weight: bold;
+}
+
+.link-card {
+    background: transparent;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+    gap: 0; 
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.link-card::before {
+    content: "> ";
+}
+
+.term-url {
+    opacity: 0.7;
+    margin-left: 8px;
+}
+
+.link-card:hover {
+    background: var(--card-hover-bg);
+    color: var(--card-hover-text);
+}
