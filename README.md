@@ -139,4 +139,6 @@ When link_order: "custom" is enabled in your config, this file becomes your mast
 2. Go to **Settings > Pages** and enable deployment from the master branch.
 3. Your site will be live at https://yourusername.github.io/.
 
+**Troubleshooting:** If your site loads as plain text without styling (no CSS), don't panic. This is a common GitHub Pages glitch during first builds. Just keep following the setup (editing your `_config.yml`) and the next build will usually fix it. You can also re-trigger the build from the **Actions** tab.
+
 Built with love by [BatchNode](https://batchnode.onrender.com).
