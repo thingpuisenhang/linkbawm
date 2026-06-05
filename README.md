@@ -10,6 +10,7 @@ A modern, high-performance, and foolproof LinkHub (Linktree alternative) built w
 - **Zero-Code Content:** Manage your links entirely via `_data/links.yml`.
 - **Identity Control:** Customize your name, bio, and avatar in `_config.yml`.
 - **Responsive Backgrounds:** Intelligent switching between landscape and portrait background images.
+- **Dynamic Assets:** Automatically generates a favicon using the first letter of your name and sets your name as the site title.
 - **Glassmorphism:** Modern "Glass" skin with frosted-blur effects.
 - **Terminal Mode:** A retro hacker skin for a unique look.
 - **Max Link Guard:** Automatically enforces a 5-link limit (configurable) to keep your page professional.

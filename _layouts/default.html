@@ -3,24 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
+    
+    {% comment %} Initialize Profile Logic Early {% endcomment %}
+    {% assign show_avatar = true %}
+    {% assign display_name = site.author.name %}
+    {% assign display_bio = site.author.bio %}
+
+    {% if site.personalize %}
+        {% assign theme_data = site.data.themes[site.skin] %}
+        {% if theme_data.show_avatar == false %}{% assign show_avatar = false %}{% endif %}
+        {% if theme_data.name %}{% assign display_name = theme_data.name %}{% endif %}
+        {% if theme_data.bio %}{% assign display_bio = theme_data.bio %}{% endif %}
+    {% endif %}
+
+    <title>{{ display_name }} | {{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
+
+    {% comment %} Dynamic Favicon: Uses the first letter of the name {% endcomment %}
+    {% assign favicon_letter = display_name | slice: 0 | uppercase %}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23666%22>{{ favicon_letter }}</text></svg>">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ '/assets/css/core.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/skins/' | append: site.skin | append: '.css' | relative_url }}">
 </head>
-
-{% comment %} Initialize Profile Logic Early {% endcomment %}
-{% assign show_avatar = true %}
-{% assign display_name = site.author.name %}
-{% assign display_bio = site.author.bio %}
-
-{% if site.personalize %}
-    {% assign theme_data = site.data.themes[site.skin] %}
-    {% if theme_data.show_avatar == false %}{% assign show_avatar = false %}{% endif %}
-    {% if theme_data.name %}{% assign display_name = theme_data.name %}{% endif %}
-    {% if theme_data.bio %}{% assign display_bio = theme_data.bio %}{% endif %}
-{% endif %}
 
 {% assign links = site.data.links %}
 {% assign final_links = "" | split: "" %}
