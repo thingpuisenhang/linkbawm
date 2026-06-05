@@ -1,22 +1,19 @@
 # Linkbawm: Your Links
 # RECOMMENDATION: Use 5 links for the best look. 
-# LIMIT: The first 6 links will be displayed to keep your page clean.
+# LIMIT: The first 5 links will be displayed in "snug" mode by default.
 
 - label: "Instagram"
-  url: "#"
+  url: "https://instagram.com/khomchunisien"
   platform: "instagram"
 - label: "Facebook"
-  url: "#"
+  url: "https://facebook.com/donalmuolhoi"
   platform: "facebook"
 - label: "Twitter"
-  url: "#"
+  url: "https://x.com/thingpuisenhang"
   platform: "twitter"
 - label: "WhatsApp"
-  url: "#"
+  url: "https://wa.me/919101292003"
   platform: "whatsapp"
-- label: "YouTube"
-  url: "#"
-  platform: "youtube"
 - label: "GitHub"
-  url: "#"
+  url: "https://github.com/thingpuisenhang"
   platform: "github"
